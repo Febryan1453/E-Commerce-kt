@@ -1,3 +1,5 @@
 <resources>
-    <color name="teal_200">#FF03DAC5</color>
+    <style name="buttonLogin" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/teal_200</item>
+    </style>
 </resources>

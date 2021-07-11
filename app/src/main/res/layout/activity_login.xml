@@ -33,16 +33,17 @@
             android:src="@drawable/shop"/>
 
         <Button
-            android:background="@color/teal_200"
+            android:id="@+id/btn_login"
+            android:theme="@style/buttonLogin"
             android:layout_width="170dp"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:text="sign in"/>
 
         <Button
             android:layout_marginTop="10dp"
-            android:background="@color/teal_700"
+            android:backgroundTint="@color/teal_700"
             android:layout_width="170dp"
-            android:layout_height="35dp"
+            android:layout_height="60dp"
             android:text="sign up"/>
 
 
