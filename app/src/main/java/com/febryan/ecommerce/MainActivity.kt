@@ -1,7 +1,6 @@
 package com.febryan.ecommerce
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.febryan.ecommerce.activity.LoginActivity
+import com.febryan.ecommerce.activity.WelcomeActivity
 import com.febryan.ecommerce.fragment.AkunFragment
 import com.febryan.ecommerce.fragment.HomeFragment
 import com.febryan.ecommerce.fragment.KeranjangFragment
@@ -87,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                         callFragment(2, fragmentAkun)
                     } else {
 //                        var i = Intent(this, LoginActivity::class.java)
-                        startActivity(Intent(this, LoginActivity::class.java))
+                        startActivity(Intent(this, WelcomeActivity::class.java))
                     }
 
                 }

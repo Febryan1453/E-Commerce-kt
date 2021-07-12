@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import com.febryan.ecommerce.MainActivity
 import com.febryan.ecommerce.R
-import com.febryan.ecommerce.activity.LoginActivity
+import com.febryan.ecommerce.activity.WelcomeActivity
 import com.febryan.ecommerce.helper.SharedPreference
-import kotlinx.android.synthetic.main.fragment_akun.*
 
 class AkunFragment : Fragment() {
 
@@ -32,7 +30,7 @@ class AkunFragment : Fragment() {
         btnLogout.setOnClickListener {
             sharedPrefHelper.setStatusLogin(false)
             Toast.makeText(activity,"Session dihapus !",Toast.LENGTH_SHORT).show()
-            startActivity(Intent(activity, LoginActivity::class.java))
+            startActivity(Intent(activity, WelcomeActivity::class.java))
             activity?.finishAffinity()
 
 //            getActivity().finish(); => kalo java
