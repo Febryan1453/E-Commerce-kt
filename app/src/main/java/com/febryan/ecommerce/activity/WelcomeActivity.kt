@@ -24,8 +24,9 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun mainButton(){
         btn_login.setOnClickListener {
-            sharedPrefHelper.setStatusLogin(true)
-            startActivity(Intent(this, MainActivity::class.java))
+//            sharedPrefHelper.setStatusLogin(true)
+//            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
 
         btn_regis.setOnClickListener {

@@ -1,5 +1,7 @@
 package com.febryan.ecommerce.api
 
+
+import com.febryan.ecommerce.model.ResponseUser
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Field
@@ -15,6 +17,13 @@ interface ApiService {
         @Field("email")     email :String,
         @Field("telp")      telp :String,
         @Field("password")  password :String,
-    ):Call<ResponseBody>
+    ):Call<ResponseUser>
+
+    @FormUrlEncoded
+    @POST("login")
+    fun login(
+        @Field("email")     email :String,
+        @Field("password")  password :String,
+    ):Call<ResponseUser>
 
 }
