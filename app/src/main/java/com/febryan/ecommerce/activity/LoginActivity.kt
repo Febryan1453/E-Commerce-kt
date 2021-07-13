@@ -3,6 +3,7 @@ package com.febryan.ecommerce.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import com.febryan.ecommerce.MainActivity
@@ -19,25 +20,25 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityLoginBinding
+//    lateinit var binding: ActivityLoginBinding
     lateinit var sharedPrefHelper: SharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_login)
 
         sharedPrefHelper = SharedPreference(this)
 
-        binding.btnLogin.setOnClickListener {
+        btn_login.setOnClickListener {
             login()
         }
     }
 
     private fun login() {
 
-        val email = binding.edtEmail.text.toString()
-        val pass = binding.edtPassword.text.toString()
+        val email = edt_email.text.toString()
+        val pass = edt_password.text.toString()
         if (email.isEmpty()){
             edt_email.error = "Wajib diisi"
             return
@@ -47,12 +48,12 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        binding.pb.visibility = View.VISIBLE
+        pb.visibility = View.VISIBLE
 
         ApiConfig.instanceRetrofit.login(email, pass).enqueue(object : Callback<ResponseUser>{
             override fun onResponse(call: Call<ResponseUser>, response: Response<ResponseUser>) {
 
-                binding.pb.visibility = View.GONE
+                pb.visibility = View.GONE
 
                 val respon = response.body()
 
@@ -61,18 +62,25 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Error: "+respon.message, Toast.LENGTH_SHORT).show()
                     }else{
                         sharedPrefHelper.setStatusLogin(true)
+
+                        sharedPrefHelper.setString(sharedPrefHelper.nama, respon.data?.name.toString())
+                        sharedPrefHelper.setString(sharedPrefHelper.telp, respon.data?.telp.toString())
+                        sharedPrefHelper.setString(sharedPrefHelper.email, respon.data?.email.toString())
+
                         val i = Intent(this@LoginActivity, MainActivity::class.java)
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(i)
                         finish()
-                        Toast.makeText(this@LoginActivity, "Sukses: "+respon.message, Toast.LENGTH_SHORT).show()
+                        val toast = Toast.makeText(this@LoginActivity, "Sukses: "+respon.message, Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER,0,0)
+                        toast.show()
                     }
                 }
 
             }
 
             override fun onFailure(call: Call<ResponseUser>, t: Throwable) {
-                binding.pb.visibility = View.GONE
+                pb.visibility = View.GONE
                 Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_SHORT).show()
             }
         })

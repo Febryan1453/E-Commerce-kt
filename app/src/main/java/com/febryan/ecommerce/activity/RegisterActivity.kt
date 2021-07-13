@@ -82,11 +82,16 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(this@RegisterActivity, "Error: "+respon.message, Toast.LENGTH_SHORT).show()
                     }else{
                         sharedPrefHelper.setStatusLogin(true)
+
+                        sharedPrefHelper.setString(sharedPrefHelper.nama, respon.data?.name.toString())
+                        sharedPrefHelper.setString(sharedPrefHelper.telp, respon.data?.telp.toString())
+                        sharedPrefHelper.setString(sharedPrefHelper.email, respon.data?.email.toString())
+
                         val i = Intent(this@RegisterActivity, MainActivity::class.java)
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(i)
                         finish()
-                        Toast.makeText(this@RegisterActivity, "Sukses: "+respon.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RegisterActivity, "Sukses: Welcome "+respon.data?.name, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

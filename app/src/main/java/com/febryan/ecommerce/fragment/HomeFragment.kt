@@ -105,23 +105,23 @@ class HomeFragment : Fragment() {
         pb4.nama = "Jaket Hitam Programming"
         pb4.harga = "Rp. 105.000"
         pb4.gambar = R.drawable.jaket_2
-
-        val pb5 = Produk()
-        pb5.nama = "Baju Kerah Merah Network"
-        pb5.harga = "Rp. 105.000"
-        pb5.gambar = R.drawable.kerah_1
-
-        val pb6 = Produk()
-        pb6.nama = "Baju Kerah Hitam Programming"
-        pb6.harga = "Rp. 105.000"
-        pb6.gambar = R.drawable.kerah_2
+//
+//        val pb5 = Produk()
+//        pb5.nama = "Baju Kerah Merah Network"
+//        pb5.harga = "Rp. 105.000"
+//        pb5.gambar = R.drawable.kerah_1
+//
+//        val pb6 = Produk()
+//        pb6.nama = "Baju Kerah Hitam Programming"
+//        pb6.harga = "Rp. 105.000"
+//        pb6.gambar = R.drawable.kerah_2
 
         arrBj.add(pb1)
         arrBj.add(pb2)
         arrBj.add(pb3)
         arrBj.add(pb4)
-        arrBj.add(pb5)
-        arrBj.add(pb6)
+//        arrBj.add(pb5)
+//        arrBj.add(pb6)
 
         return arrBj
     }

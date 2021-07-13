@@ -5,13 +5,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+//    compileSdkVersion 30
+//    buildToolsVersion "30.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.1"
 
     defaultConfig {
         applicationId "com.febryan.ecommerce"
+//        minSdkVersion 21
+//        targetSdkVersion 30
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
