@@ -59,20 +59,24 @@ class LoginActivity : AppCompatActivity() {
 
                 if (respon != null) {
                     if (respon.status == 0){
-                        Toast.makeText(this@LoginActivity, "Error: "+respon.message, Toast.LENGTH_SHORT).show()
+                        val toast = Toast.makeText(this@LoginActivity, respon.message, Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER,0,0)
+                        toast.show()
                     }else{
                         sharedPrefHelper.setStatusLogin(true)
 
-                        sharedPrefHelper.setString(sharedPrefHelper.nama, respon.data?.name.toString())
-                        sharedPrefHelper.setString(sharedPrefHelper.telp, respon.data?.telp.toString())
-                        sharedPrefHelper.setString(sharedPrefHelper.email, respon.data?.email.toString())
+                        sharedPrefHelper.setUser(respon.data!!)
+
+//                        sharedPrefHelper.setString(sharedPrefHelper.nama, respon.data?.name.toString())
+//                        sharedPrefHelper.setString(sharedPrefHelper.telp, respon.data?.telp.toString())
+//                        sharedPrefHelper.setString(sharedPrefHelper.email, respon.data?.email.toString())
 
                         val i = Intent(this@LoginActivity, MainActivity::class.java)
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(i)
                         finish()
-                        val toast = Toast.makeText(this@LoginActivity, "Sukses: "+respon.message, Toast.LENGTH_SHORT)
-                        toast.setGravity(Gravity.CENTER,0,0)
+                        val toast = Toast.makeText(this@LoginActivity, respon.message, Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.TOP,0,0)
                         toast.show()
                     }
                 }

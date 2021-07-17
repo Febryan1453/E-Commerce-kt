@@ -3,6 +3,7 @@ package com.febryan.ecommerce.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import com.febryan.ecommerce.MainActivity
@@ -79,19 +80,26 @@ class RegisterActivity : AppCompatActivity() {
 
                 if (respon != null) {
                     if (respon.status == 0){
-                        Toast.makeText(this@RegisterActivity, "Error: "+respon.message, Toast.LENGTH_SHORT).show()
+                        val toast = Toast.makeText(this@RegisterActivity, respon.message, Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER,0,0)
+                        toast.show()
                     }else{
                         sharedPrefHelper.setStatusLogin(true)
 
-                        sharedPrefHelper.setString(sharedPrefHelper.nama, respon.data?.name.toString())
-                        sharedPrefHelper.setString(sharedPrefHelper.telp, respon.data?.telp.toString())
-                        sharedPrefHelper.setString(sharedPrefHelper.email, respon.data?.email.toString())
+                        sharedPrefHelper.setUser(respon.data!!)
+
+//                        sharedPrefHelper.setString(sharedPrefHelper.nama, respon.data?.name.toString())
+//                        sharedPrefHelper.setString(sharedPrefHelper.telp, respon.data?.telp.toString())
+//                        sharedPrefHelper.setString(sharedPrefHelper.email, respon.data?.email.toString())
 
                         val i = Intent(this@RegisterActivity, MainActivity::class.java)
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(i)
                         finish()
-                        Toast.makeText(this@RegisterActivity, "Sukses: Welcome "+respon.data?.name, Toast.LENGTH_SHORT).show()
+                        val toast = Toast.makeText(this@RegisterActivity, "Welcome "+respon.data?.name, Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.TOP,0,0)
+                        toast.show()
+
                     }
                 }
             }
