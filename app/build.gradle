@@ -69,4 +69,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$versiOkhttp"
 
     implementation 'com.google.code.gson:gson:2.8.7'
+
+    def versiPicasso = "2.71828"
+    implementation "com.squareup.picasso:picasso:$versiPicasso"
 }
